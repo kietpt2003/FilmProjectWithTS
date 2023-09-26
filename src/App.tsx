@@ -10,6 +10,7 @@ import Film from './components/Film';
 import Detail from './components/Detail';
 import News from './components/News';
 import Profile from './components/Profile';
+import { CustomBox } from './components/PolymorphicComponent/CustomBox';
 
 function App() {
   const { theme, toggle, dark } = useContext(ThemeContext)
@@ -17,6 +18,7 @@ function App() {
     <Box className='App' sx={{ backgroundColor: theme.backgroundColor }}>
       <ScrollToTop />
       <Navigation />
+      {/* <CustomBox as={'a'} size='lg'>Label</CustomBox> */}
       <Box sx={{ marginLeft: '10rem' }}>
         <FormControlLabel className={dark ? 'darkTheme' : 'whiteTheme'} control={
           <Switch checked={dark} onChange={toggle} inputProps={{ 'aria-label': 'controlled' }} />

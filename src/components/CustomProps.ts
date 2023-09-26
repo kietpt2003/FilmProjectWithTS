@@ -43,11 +43,15 @@ export type FilmDetailProps = {
     setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
+type color = 'dark' | 'wite'
+type theme = 'Theme'
+
 export type TrailerModalProps = {
     isOpen: boolean
     setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
     film: FilmProps | undefined
-    dark: boolean
+    // className: `${color}${theme}` //Template literals
+    className: Exclude<`${color}${theme}`, 'witeTheme'> | 'whiteTheme' //Template literals with Exclude(Ngoại trừ)
 
 }
 
@@ -76,3 +80,19 @@ export type ListfilmProps<FilmType, FavoType> = { //Generic Type
     openDiaglog: boolean
     handleCloseDialog: () => void
 }
+
+export type TextFieldType = {
+    isVerified: boolean | undefined
+}
+
+export type Email = TextFieldType & {
+    email: string | undefined
+    givenName?: never
+}
+
+export type GivenName = TextFieldType & {
+    givenName: string | undefined
+    email?: never
+}
+
+export type TextFieldProps = Email | GivenName //Restrict Props(Có prop này thì ko dc có prop kia => truyền name rồi thì k dc truyền thêm email)

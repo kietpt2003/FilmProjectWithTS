@@ -2,9 +2,13 @@ import { makeStyles } from '@material-ui/core';
 import { Box, Button, Modal, Typography } from '@mui/material'
 import { blue, grey, yellow } from '@mui/material/colors';
 import { TrailerModalProps } from './CustomProps';
+import CustomIframe from './CustomIframe';
+import { ThemeContext } from './ThemeContext';
+import { useContext } from 'react';
 
 export default function TrailerModal(props: TrailerModalProps) {
-    const { isOpen, setIsOpen, film, dark } = props;
+    const { dark } = useContext(ThemeContext)
+    const { isOpen, setIsOpen, film, className } = props;
     const useStyle = makeStyles(() => ({
         darkTheme: {
             '& .custom_modal_content': {
@@ -88,12 +92,17 @@ export default function TrailerModal(props: TrailerModalProps) {
         >
             <Box className='custom_modal_content'>
                 <Typography className='custom_txt' variant='h6'>{film?.name} - Trailer</Typography>
-                <Box
-                    component={'iframe'}
+                <CustomIframe
                     width={'100%'} height={400} src={film?.clip} title={film?.name} frameBorder="0"
                     allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
                     allowFullScreen
                 />
+                {/* <Box
+                    component={'iframe'}
+                    width={'100%'} height={400} src={film?.clip} title={film?.name} frameBorder="0"
+                    allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+                    allowFullScreen
+                /> */}
                 <Box className='custom_btn'>
                     <Button onClick={() => { setIsOpen(false) }}>Close</Button>
                 </Box>

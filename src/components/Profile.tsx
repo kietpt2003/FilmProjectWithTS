@@ -8,6 +8,7 @@ import VerifiedIcon from '@mui/icons-material/Verified';
 import { Link } from 'react-router-dom';
 import { ThemeContext } from './ThemeContext';
 import { UserContext } from './UserContext';
+import TextFieldCustom from './TextFieldCustom';
 
 export default function Profile() {
     const userContext = useContext(UserContext)
@@ -69,16 +70,32 @@ export default function Profile() {
                 '& .css-ahj2mt-MuiTypography-root': {
                     fontFamily: 'monospace',
                 },
-                '& .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-disabled': {
-                    color: 'white',
-                    fontFamily: 'monospace',
-                },
-                '& .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input.Mui-disabled': {
-                    '-webkit-text-fill-color': 'rgba(174, 177, 182, 0.75)',
-                    fontFamily: 'monospace',
-                },
-                '& .css-md26zr-MuiInputBase-root-MuiOutlinedInput-root.Mui-disabled .MuiOutlinedInput-notchedOutline': {
-                    borderColor: 'white',
+                '& .custom_text_field': {
+                    '& .MuiFormLabel-root.Mui-disabled': {
+                        '&.Mui-error': {
+                            color: 'red',
+                        },
+                        color: 'white',
+                        fontFamily: 'monospace',
+                    },
+                    '& .MuiOutlinedInput-root': {
+                        '&.Mui-error .MuiOutlinedInput-notchedOutline': {
+                            borderColor: 'red',
+                        },
+                        '&  .MuiOutlinedInput-notchedOutline': {
+                            borderColor: 'white',
+                        }
+                    },
+                    '& .MuiInputBase-input.MuiOutlinedInput-input.Mui-disabled.Mui-disabled': {
+                        '-webkit-text-fill-color': 'rgba(174, 177, 182, 0.75)',
+                        fontFamily: 'monospace',
+                    },
+                    '&.error': {
+                        '& .MuiInputBase-input.MuiOutlinedInput-input.Mui-disabled': {
+                            '-webkit-text-fill-color': 'red',
+                            fontFamily: 'monospace',
+                        },
+                    }
                 },
             }
         },
@@ -141,16 +158,32 @@ export default function Profile() {
                         fontFamily: 'monospace',
                     },
                 },
-                '& .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-disabled': {
-                    color: blue[900],
-                    fontFamily: 'monospace',
-                },
-                '& .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input.Mui-disabled': {
-                    '-webkit-text-fill-color': 'rgba(11, 54, 227, 0.38)',
-                    fontFamily: 'monospace',
-                },
-                '& .css-md26zr-MuiInputBase-root-MuiOutlinedInput-root.Mui-disabled .MuiOutlinedInput-notchedOutline': {
-                    borderColor: blue[900],
+                '& .custom_text_field': {
+                    '& .MuiFormLabel-root.Mui-disabled': {
+                        '&.Mui-error': {
+                            color: 'red',
+                        },
+                        color: blue[900],
+                        fontFamily: 'monospace',
+                    },
+                    '& .MuiOutlinedInput-root': {
+                        '&.Mui-error .MuiOutlinedInput-notchedOutline': {
+                            borderColor: 'red',
+                        },
+                        '&  .MuiOutlinedInput-notchedOutline': {
+                            borderColor: blue[900],
+                        }
+                    },
+                    '& .MuiInputBase-input.MuiOutlinedInput-input.Mui-disabled': {
+                        '-webkit-text-fill-color': 'rgba(11, 54, 227, 0.38)',
+                        fontFamily: 'monospace',
+                    },
+                    '&.error': {
+                        '& .MuiInputBase-input.MuiOutlinedInput-input.Mui-disabled': {
+                            '-webkit-text-fill-color': 'red',
+                            fontFamily: 'monospace',
+                        },
+                    }
                 },
             }
         }
@@ -182,22 +215,10 @@ export default function Profile() {
                             <Typography variant='h5'>Your Profile</Typography>
                         </Grid>
                         <Grid item xs={12}>
-                            <TextField
-                                variant='outlined'
-                                label="Name"
-                                disabled
-                                fullWidth
-                                value={userContext?.user?.given_name}
-                            />
+                            <TextFieldCustom givenName={userContext?.user?.given_name} isVerified={userContext?.user?.verified_email} /> {/**Restrict Props(Có prop này thì ko dc có prop kia => truyền name rồi thì k dc truyền thêm email) */}
                         </Grid>
                         <Grid item xs={12}>
-                            <TextField
-                                variant='outlined'
-                                label="Phone Number"
-                                disabled
-                                fullWidth
-                                value={userContext?.user?.email}
-                            />
+                            <TextFieldCustom email={userContext?.user?.email} isVerified={userContext?.user?.verified_email} />
                         </Grid>
                         <Grid item xs={6}>
                             <Typography variant='body1'>Account verification: {userContext?.user?.verified_email ? 'Yes' : 'No'}</Typography>

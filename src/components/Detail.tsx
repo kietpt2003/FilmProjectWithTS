@@ -8,6 +8,8 @@ import { blue, grey, yellow } from '@mui/material/colors';
 import { makeStyles } from '@material-ui/core';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import { FilmDetailProps, FilmProps } from './CustomProps';
+import CustomIframe from './CustomIframe';
+import CustomBtn from './CustomBtn';
 
 export default function Detail() {
     const { dark } = useContext(ThemeContext)
@@ -310,10 +312,9 @@ export default function Detail() {
         <Container className={dark ? classes.darkTheme : classes.whiteTheme}>
             <Box className='custom_film'>
                 {isValidURL(film?.filmURL) ?
-                    <Box
-                        component={'iframe'}
-                        borderRadius={'1rem'}
-                        width={'100%'} height={'35rem'} src={film?.filmURL} frameBorder="0"
+                    <CustomIframe
+                        style={{ borderRadius: '1rem' }}
+                        width={'100%'} height={'99.5%'} src={film?.filmURL} frameBorder="0"
                         allow='accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
                         allowFullScreen
                     />
@@ -324,8 +325,8 @@ export default function Detail() {
                     </Box>
                 }
             </Box>
-            {isOpen && <TrailerModal isOpen={isOpen} setIsOpen={setIsOpen} film={film} dark={dark} />}
-            {dark ? <FilmDetail film={film} setIsOpen={setIsOpen} /> : <FilmDetail film={film} setIsOpen={setIsOpen} />}
+            {isOpen && <TrailerModal isOpen={isOpen} setIsOpen={setIsOpen} film={film} className={dark ? 'darkTheme' : 'whiteTheme'} />}
+            <FilmDetail film={film} setIsOpen={setIsOpen} />
         </Container>
     )
 }
@@ -343,6 +344,9 @@ function FilmDetail(props: FilmDetailProps) {
                 <Button className='custom_btn' onClick={() => props.setIsOpen(true)}>
                     <Typography className='custom_txt' variant='body1'>Watch Trailer</Typography>
                 </Button>
+                <CustomBtn variant='primary' onClick={() => { console.log('clicked') }}>
+                    Click Me
+                </CustomBtn>
             </Box>
         </Box>
     )
