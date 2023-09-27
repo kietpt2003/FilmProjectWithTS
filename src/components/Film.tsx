@@ -11,14 +11,14 @@ export default function Film() {
     const [films, setFilms] = useState<FilmProps[]>([]);
     const [favoFilms, setFavo] = useState<string[]>([]);
     const { dark } = useContext(ThemeContext)
-    const [openDiaglog, setOpenDiaglog] = useState(false);
+    const [openDialog, setOpenDialog] = useState(false);
 
     const handleOpenDialog = () => {
-        setOpenDiaglog(true);
+        setOpenDialog(true);
     };
 
     const handleCloseDialog = () => {
-        setOpenDiaglog(false);
+        setOpenDialog(false);
     };
 
     const [page, setPage] = useState(1);
@@ -71,7 +71,7 @@ export default function Film() {
         <Container className={dark ? 'darkTheme' : 'whiteTheme'} fixed>
             <Box>
                 <Grid container spacing={2}>
-                    <ListFilms films={films} favoFilms={favoFilms} setFavo={setFavo} handleOpenDialog={handleOpenDialog} openDiaglog={openDiaglog} handleCloseDialog={handleCloseDialog} />
+                    <ListFilms films={films} favoFilms={favoFilms} setFavo={setFavo} handleOpenDialog={handleOpenDialog} openDialog={openDialog} handleCloseDialog={handleCloseDialog} />
                 </Grid>
                 <Stack spacing={2} className={'custom_pagination'}>
                     <Pagination count={3} page={page} onChange={handleChangePage} />

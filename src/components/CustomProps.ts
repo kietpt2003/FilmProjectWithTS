@@ -77,7 +77,7 @@ export type ListfilmProps<FilmType, FavoType> = { //Generic Type
     favoFilms: FavoType
     setFavo: React.Dispatch<React.SetStateAction<string[]>>
     handleOpenDialog: () => void
-    openDiaglog: boolean
+    openDialog: boolean
     handleCloseDialog: () => void
 }
 

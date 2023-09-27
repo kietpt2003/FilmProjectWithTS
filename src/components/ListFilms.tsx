@@ -7,7 +7,7 @@ import { FilmProps, ListfilmProps } from './CustomProps';
 import { UserContext } from './UserContext';
 
 export default function ListFilms<FilmsType extends FilmProps[], FavoType extends string[]>({ //Generic Type
-    films, favoFilms, setFavo, handleOpenDialog, openDiaglog, handleCloseDialog
+    films, favoFilms, setFavo, handleOpenDialog, openDialog, handleCloseDialog
 }: ListfilmProps<FilmsType, FavoType>) {
 
     const userContext = useContext(UserContext)
@@ -90,7 +90,7 @@ export default function ListFilms<FilmsType extends FilmProps[], FavoType extend
                                         <IconButton className='custom_icon_btn' onClick={handleOpenDialog}>
                                             <StarIcon className='is_favo_icon no'>star</StarIcon>
                                         </IconButton>
-                                        <CheckLogin open={openDiaglog} handleClose={handleCloseDialog} profile={userContext?.user} />
+                                        <CheckLogin open={openDialog} handleClose={handleCloseDialog} profile={userContext?.user} />
                                     </Box>
 
                                 }
