@@ -43,7 +43,7 @@ export type FilmDetailProps = {
     setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-type color = 'dark' | 'wite'
+type color = 'dark' | 'red' | 'white'
 type theme = 'Theme'
 
 export type TrailerModalProps = {
@@ -51,7 +51,7 @@ export type TrailerModalProps = {
     setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
     film: FilmProps | undefined
     // className: `${color}${theme}` //Template literals
-    className: Exclude<`${color}${theme}`, 'witeTheme'> | 'whiteTheme' //Template literals with Exclude(Ngoại trừ)
+    className: Exclude<`${color}${theme}`, 'redTheme'> //Template literals with Exclude(Ngoại trừ)
 
 }
 
