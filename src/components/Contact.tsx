@@ -1,6 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useForm, Form } from './useForm';
-import { Alert, Button, Grid, Snackbar, TextField, Typography } from '@mui/material';
+import { Alert, Button, Grid, IconButton, Snackbar, TextField, Typography } from '@mui/material';
+import ExpandLess from '@mui/icons-material/ExpandLess';
+import ExpandMore from '@mui/icons-material/ExpandMore';
+import { ListContact } from './InterfaceWithClass/ListContact';
+import { ContactClass } from './InterfaceWithClass/ContactClass';
+import { ContactInterface } from './InterfaceWithClass/ContactInterface';
 
 const initialValue = {
     name: '',
@@ -8,16 +13,20 @@ const initialValue = {
     email: '',
     suggestion: ''
 }
+const sendedForm: ContactInterface[] = []
 
 export default function Contact() {
     const { values, handleInputChange, handelForm, msgError, arrErrorMsg } = useForm(initialValue);
     const [isSend, setSend] = useState(false);
     const [isError, setError] = useState(false);
+    const [showHistory, setShow] = useState(false);
 
     const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         const result = await handelForm(values);
         if (result === 'send success') {
+            const formInfo: ContactInterface = new ContactClass(values.name, values.phone, values.email, values.suggestion)
+            sendedForm.push(formInfo)
             setError(false)
         } else {
             setError(true)
@@ -33,12 +42,33 @@ export default function Contact() {
         setSend(false);
     };
 
+    useEffect(() => {
+        // list template instance
+        if (sendedForm) {
+            const ul = document.querySelector('ul')!;
+            const list = new ListContact(ul);
+            sendedForm.forEach(form => {
+                list.render(form, 'end')
+            });
+        }
+    }, [showHistory])
+
     return (
         <>
             <Form>
                 <Grid container>
-                    <Grid item xs={12}>
+                    <Grid item xs={12} className='config_contact'>
                         <Typography className='contact_title' variant='h5'>Contact Us</Typography>
+                        <IconButton className='historyBtn' onClick={() => setShow(!showHistory)}>
+                            Show History{showHistory ? <ExpandLess /> : <ExpandMore />}
+                        </IconButton>
+                    </Grid>
+                    <Grid item xs={12}>
+                        {showHistory &&
+                            <ul className="item-list">
+
+                            </ul>
+                        }
                     </Grid>
                     <Grid className='contact_form' item xs={12}>
                         <TextField

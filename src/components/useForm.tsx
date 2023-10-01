@@ -241,6 +241,16 @@ export function Form(props: FormCustomProps) {
                 margin: '0.3rem 0 0.3rem 0',
                 color: 'white'
             },
+            '& .config_contact': {
+                display: 'flex',
+                justifyContent: 'space-between',
+                '& .css-78trlr-MuiButtonBase-root-MuiIconButton-root': {
+                    fontSize: 'large',
+                    fontWeight: 'bold',
+                    fontFamily: 'monospace',
+                    color: 'white'
+                },
+            },
             '& .contact_title': {
                 '&.css-2ulfj5-MuiTypography-root': {
                     color: 'white',
@@ -328,6 +338,16 @@ export function Form(props: FormCustomProps) {
                 width: '100%',
                 margin: '0.3rem 0 0.3rem 0',
                 color: 'white'
+            },
+            '& .config_contact': {
+                display: 'flex',
+                justifyContent: 'space-between',
+                '& .css-78trlr-MuiButtonBase-root-MuiIconButton-root': {
+                    fontSize: 'large',
+                    fontWeight: 'bold',
+                    fontFamily: 'monospace',
+                    color: blue[900]
+                },
             },
             '& .contact_title': {
                 '&.css-ag7rrr-MuiTypography-root': {
