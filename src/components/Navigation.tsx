@@ -285,7 +285,7 @@ export default function Navigation() {
                                     <MenuItem className='custom_menu_item' onClick={handleCloseNavMenu}>
                                         <Link className='custom_link' to='/setting'>
                                             <Avatar className='custom_icon' alt="Google Avatar" src={userContext?.user.picture} />
-                                            <Typography variant='body1'>Settings</Typography>
+                                            <Typography variant='body1'>Setting</Typography>
                                         </Link>
                                     </MenuItem>
                                 }

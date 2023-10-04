@@ -215,10 +215,10 @@ export default function Profile() {
                             <Typography variant='h5'>Your Profile</Typography>
                         </Grid>
                         <Grid item xs={12}>
-                            <TextFieldCustom givenName={userContext?.user?.given_name} isVerified={userContext?.user?.verified_email} /> {/**Restrict Props(Có prop này thì ko dc có prop kia => truyền name rồi thì k dc truyền thêm email) */}
+                            <TextFieldCustom givenName={userContext?.user?.given_name!} isVerified={userContext?.user?.verified_email!} /> {/**Restrict Props(Có prop này thì ko dc có prop kia => truyền name rồi thì k dc truyền thêm email) */}
                         </Grid>
                         <Grid item xs={12}>
-                            <TextFieldCustom email={userContext?.user?.email} isVerified={userContext?.user?.verified_email} />
+                            <TextFieldCustom email={userContext?.user?.email!} isVerified={userContext?.user?.verified_email!} />
                         </Grid>
                         <Grid item xs={6}>
                             <Typography variant='body1'>Account verification: {userContext?.user?.verified_email ? 'Yes' : 'No'}</Typography>

@@ -39,7 +39,7 @@ export type FilmProps = {
 }
 
 export type FilmDetailProps = {
-    film: FilmProps | undefined
+    film: FilmProps
     setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
@@ -49,7 +49,7 @@ type theme = 'Theme'
 export type TrailerModalProps = {
     isOpen: boolean
     setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
-    film: FilmProps | undefined
+    film: FilmProps
     // className: `${color}${theme}` //Template literals
     className: Exclude<`${color}${theme}`, 'redTheme'> //Template literals with Exclude(Ngoại trừ)
 
@@ -82,16 +82,16 @@ export type ListfilmProps<FilmType, FavoType> = { //Generic Type
 }
 
 export type TextFieldType = {
-    isVerified: boolean | undefined
+    isVerified: boolean
 }
 
 export type Email = TextFieldType & {
-    email: string | undefined
+    email: string
     givenName?: never
 }
 
 export type GivenName = TextFieldType & {
-    givenName: string | undefined
+    givenName: string
     email?: never
 }
 
