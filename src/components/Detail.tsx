@@ -335,12 +335,12 @@ function FilmDetail(props: FilmDetailProps) {
     const film = props.film;
     return (
         <Box className='film_detail'>
-            <Box className='custom_img' component={'img'} alt={`Picture of ${film.name}`} src={film.img} />
+            <Box className='custom_img' component={'img'} alt={`Picture of ${film?.name}`} src={film?.img} />
             <Box className='detail_form'>
-                <Typography className='custom_txt' variant='h3'>{film.name}</Typography>
-                <Typography className='custom_txt custom_line' variant='h5'>Ticket price: € {film.cost}</Typography>
+                <Typography className='custom_txt' variant='h3'>{film?.name}</Typography>
+                <Typography className='custom_txt custom_line' variant='h5'>Ticket price: € {film?.cost}</Typography>
                 <Typography className='custom_txt custom_line' variant='h5'>Description:</Typography>
-                <Typography className='custom_txt custom_description' variant='body1' overflow={'auto'}>{film.info}</Typography>
+                <Typography className='custom_txt custom_description' variant='body1' overflow={'auto'}>{film?.info}</Typography>
                 <Button className='custom_btn' onClick={() => props.setIsOpen(true)}>
                     <Typography className='custom_txt' variant='body1'>Watch Trailer</Typography>
                 </Button>

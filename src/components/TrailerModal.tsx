@@ -3,11 +3,8 @@ import { Box, Button, Modal, Typography } from '@mui/material'
 import { blue, grey, yellow } from '@mui/material/colors';
 import { TrailerModalProps } from './CustomProps';
 import CustomIframe from './CustomIframe';
-import { ThemeContext } from './ThemeContext';
-import { useContext } from 'react';
 
 export default function TrailerModal(props: TrailerModalProps) {
-    const { dark } = useContext(ThemeContext)
     const { isOpen, setIsOpen, film, className } = props;
     const useStyle = makeStyles(() => ({
         darkTheme: {
@@ -84,7 +81,7 @@ export default function TrailerModal(props: TrailerModalProps) {
     const classes = useStyle();
     return (
         <Modal
-            className={dark ? classes.darkTheme : classes.whiteTheme}
+            className={className === 'darkTheme' ? classes.darkTheme : classes.whiteTheme}
             open={isOpen}
             onClose={() => { setIsOpen(false) }}
             aria-labelledby="parent-modal-title"
